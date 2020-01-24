@@ -1,7 +1,7 @@
 {
   "name": "react-native-open-security-settings",
   "title": "React Native Open Security Settings",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "Library for opening security setup screen if there is no security enabled in your phone",
   "main": "index.js",
   "scripts": {
