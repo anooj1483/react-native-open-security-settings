@@ -30,7 +30,7 @@
 
 ## Usage
 ```javascript
-import {Platform} from 'react-native
+import {Platform} from 'react-native'
 import OpenSecuritySettings from 'react-native-open-security-settings';
 
 if(Platform.OS == 'android'){
