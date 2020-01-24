@@ -32,6 +32,7 @@ public class OpenSecuritySettingsModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void openSecuritySettings(){
         Intent intent=new Intent(Settings.ACTION_SECURITY_SETTINGS);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.reactContext.startActivity(intent);
     }
 }
