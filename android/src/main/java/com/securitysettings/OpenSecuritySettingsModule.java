@@ -1,6 +1,8 @@
 package com.securitysettings;
 
+import android.app.admin.DevicePolicyManager;
 import android.content.Intent;
+import android.os.Build;
 import android.provider.Settings;
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -31,7 +33,7 @@ public class OpenSecuritySettingsModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void openSecuritySettings(){
-        Intent intent=new Intent(Settings.ACTION_SECURITY_SETTINGS);
+        Intent  intent=new Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.reactContext.startActivity(intent);
     }
