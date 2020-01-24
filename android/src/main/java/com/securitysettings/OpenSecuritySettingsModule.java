@@ -1,4 +1,7 @@
-package com.reactlibrary;
+package com.securitysettings;
+
+import android.content.Intent;
+import android.provider.Settings;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -23,5 +26,12 @@ public class OpenSecuritySettingsModule extends ReactContextBaseJavaModule {
     public void sampleMethod(String stringArgument, int numberArgument, Callback callback) {
         // TODO: Implement some actually useful functionality
         callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
+    }
+
+
+    @ReactMethod
+    public void openSecuritySettings(){
+        Intent intent=new Intent(Settings.ACTION_SECURITY_SETTINGS);
+        this.reactContext.startActivity(intent);
     }
 }
