@@ -37,4 +37,41 @@ public class OpenSecuritySettingsModule extends ReactContextBaseJavaModule {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.reactContext.startActivity(intent);
     }
+
+@ReactMethod
+public void isDeviceSecure(Promise promise)
+{
+    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+    {
+        KeyguardManager manager = (KeyguardManager) reactContext.getSystemService(ReactContext.KEYGUARD_SERVICE);
+        promise.resolve(manager.isDeviceSecure());
+    }else{
+        String LOCKSCREEN_UTILS = "com.android.internal.widget.LockPatternUtils";
+        try
+{
+            Class<?> lockUtilsClass = Class.forName(LOCKSCREEN_UTILS);
+            Object lockUtils = lockUtilsClass.getConstructor(ReactContext.class).newInstance(reactContext);
+            Method method = lockUtilsClass.getMethod("isLockScreenDisabled");
+
+            boolean isDisabled;
+            try {
+                isDisabled = Boolean.valueOf(String.valueOf(method.invoke(lockUtils)));
+            }
+            catch (InvocationTargetException ex) {
+                isDisabled = true;
+            }
+            promise.resolve(!isDisabled);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        promise.resolve(false);
+    }
+    //promise.resolve(false);
+}
+
+
+
+
 }
