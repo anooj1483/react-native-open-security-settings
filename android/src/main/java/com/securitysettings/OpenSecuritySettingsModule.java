@@ -1,14 +1,19 @@
 package com.securitysettings;
 
+import android.app.KeyguardManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.Intent;
 import android.os.Build;
 import android.provider.Settings;
-
+import android.util.Log;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class OpenSecuritySettingsModule extends ReactContextBaseJavaModule {
 

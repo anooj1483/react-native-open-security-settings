@@ -36,6 +36,11 @@ import OpenSecuritySettings from 'react-native-open-security-settings';
 if(Platform.OS == 'android'){
 	OpenSecuritySettings.openSecuritySettings()
 }else{
-	Linking.openURL('app-settings')
+	Linking.openURL('app-settings:')
 }
+
+//Additional Method: isDeviceSecure
+let isSecure = await OpenSecuritySettings.isDeviceSecure();
+
+
 ```
